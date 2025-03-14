@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name"viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>お問い合わせフォーム</h2>
+	<form th:action="@{/confirm}" method="post" th:object="${contactForm}">
+		<table>
+			<tr>
+				<th><label for="userName">お名前</label></th>
+				<td><input type="text" th:field="*{userName}"><br>
+				<div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color:red;"></div></td>
+			</tr>
+			
+			<tr>
+				<th><label for="email">メールアドレス</label></th>
+				<td><input type="text" th:field="*{email}"><br>
+				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></div></td>
+			</tr>
+			
+			<tr>
+				<th><label for="message">お問い合わせ内容</label></th>
+				<td><textarea cols="30" rows="10" th:field="*{message}"></textarea><br>
+				<div th:if="${#fields.hasErrors('message')}" th:errors="*{message}" style="color:red;"></div></td>
+			</tr>
+		</table>
+		<button type="submit">登録</button>	
+	</form>
+</body>
+</html>
